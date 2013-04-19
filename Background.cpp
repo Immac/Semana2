@@ -21,7 +21,7 @@ void Background::render()
 {
     SDL_Rect offset;
 
-    if(x<-image->w)
+    if(x< -image->w)
         x=0;
     offset.x = x;
     offset.y = 0;

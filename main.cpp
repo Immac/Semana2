@@ -2,9 +2,9 @@
 and may not be redistributed without written permission.*/
 
 //The headers
-#include "SDL/SDL.h"
-#include "SDL/SDL_image.h"
-#include "SDL/SDL_ttf.h"
+#include "SDL.h"
+#include "SDL_image.h"
+//#include "SDL_ttf.h"
 #include "Background.h"
 #include "Player.h"
 #include "Enemy.h"
@@ -39,7 +39,7 @@ bool init()
 
 void frameCap()
 {
-    int frames_per_seccond = 15;
+    int frames_per_seccond = 60;
     if(update->get_ticks() < 1000 / frames_per_seccond)
     {
         //Sleep the remaining frame time
@@ -59,6 +59,9 @@ int main( int argc, char* args[] )
     Background background(screen);
     Player player(screen);
     Enemy enemy(screen);
+    Enemy enemy2(screen);
+    enemy2.x = enemy.x + 350;
+    enemy2.y = enemy.y - 150;
 
     SDL_Event event;
     //Quit flag
@@ -89,6 +92,8 @@ int main( int argc, char* args[] )
         background.logic();
         player.logic();
         enemy.logic();
+        enemy2.logic();
+
 
         if(player.x-enemy.x<50
            && player.x-enemy.x>-50
@@ -99,9 +104,20 @@ int main( int argc, char* args[] )
            break;
         }
 
+        if(player.x-enemy2.x<50
+           && player.x-enemy2.x>-50
+           && player.y-enemy2.y<50
+           && player.y-enemy2.y>-50
+           )
+        {
+           break;
+        }
+
+
         background.render();
         player.render();
         enemy.render();
+        enemy2.render();
 
         frameCap();
 
@@ -122,6 +138,15 @@ int main( int argc, char* args[] )
             if( event.type == SDL_KEYDOWN )
             {
                 //Set the proper message surface
+        if(player.x-enemy.x<50
+           && player.x-enemy.x>-50
+           && player.y-enemy.y<50
+           && player.y-enemy.y>-50
+           )
+        {
+           break;
+        }
+
                 switch( event.key.keysym.sym )
                 {
                     case SDLK_ESCAPE: quit = true; break;
