@@ -66,6 +66,7 @@ int main( int argc, char* args[] )
     SDL_Event event;
     //Quit flag
     bool quit = false;
+
     while( quit == false )
     {
         //If there's an event to handle
@@ -101,6 +102,7 @@ int main( int argc, char* args[] )
            && player.y-enemy.y>-50
            )
         {
+
            break;
         }
 
@@ -110,6 +112,8 @@ int main( int argc, char* args[] )
            && player.y-enemy2.y>-50
            )
         {
+
+
            break;
         }
 
@@ -128,7 +132,35 @@ int main( int argc, char* args[] )
         }
 
     }
+    for (int i = 0; i < 5; i++){
 
+        player.die(i);
+
+        background.render();
+        player.render();
+        enemy.render();
+        enemy2.render();
+
+        frameCap();
+
+        SDL_Delay(100);
+        /*SDL_Rect offset;
+        offset.x = 0;
+        offset.y = 0;
+
+
+        SDL_BlitSurface( game_over, NULL, screen, &offset );
+*/
+        frameCap();
+
+        //Update the screen
+        if( SDL_Flip( screen ) == -1 )
+        {
+            return 1;
+        }
+
+
+    }
     while( quit == false )
     {
         //If there's an event to handle
@@ -142,6 +174,14 @@ int main( int argc, char* args[] )
            && player.x-enemy.x>-50
            && player.y-enemy.y<50
            && player.y-enemy.y>-50
+           )
+        {
+           break;
+        }
+         if(player.x-enemy2.x<50
+           && player.x-enemy2.x>-50
+           && player.y-enemy2.y<50
+           && player.y-enemy2.y>-50
            )
         {
            break;
@@ -164,6 +204,7 @@ int main( int argc, char* args[] )
         offset.x = 0;
         offset.y = 0;
 
+
         SDL_BlitSurface( game_over, NULL, screen, &offset );
 
         frameCap();
@@ -174,6 +215,8 @@ int main( int argc, char* args[] )
             return 1;
         }
     }
+
+
 
     //SDL_Quit();
 

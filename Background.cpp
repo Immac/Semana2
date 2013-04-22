@@ -14,7 +14,7 @@ Background::~Background()
 
 void Background::logic()
 {
-    x--;
+    x-=5;
 }
 
 void Background::render()
