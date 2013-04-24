@@ -143,7 +143,7 @@ int main( int argc, char* args[] )
 
         frameCap();
 
-        SDL_Delay(100);
+        SDL_Delay(60);
         /*SDL_Rect offset;
         offset.x = 0;
         offset.y = 0;
@@ -151,7 +151,7 @@ int main( int argc, char* args[] )
 
         SDL_BlitSurface( game_over, NULL, screen, &offset );
 */
-        frameCap();
+       // frameCap();
 
         //Update the screen
         if( SDL_Flip( screen ) == -1 )
