@@ -15,6 +15,8 @@ public:
     int acceleration;
     int current_frame;
     int draw_frame;
+    int floor;
+   // int canBeWater;
     SDL_Surface *images[10];
     SDL_Surface *screen;
 
@@ -23,7 +25,9 @@ public:
     void render();
     void jump();
     void die(int i);
+    void setFloor(int i);
     virtual ~Player();
+
 };
 
 #endif // PLAYER_H

@@ -7,7 +7,7 @@ Enemy::Enemy(SDL_Surface *screen)
     this->images[1] = IMG_Load( "enemy/2.png" );
     this->images[2] = IMG_Load( "enemy/3.png" );
     this->x = 1000;
-    this->y = 400;
+    this->y = 350;
     this->acceleration=2;
     this->velocity=0;
     this->current_frame=0;

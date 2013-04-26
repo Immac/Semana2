@@ -1,10 +1,13 @@
 #include "Background.h"
 
+
 Background::Background(SDL_Surface *screen)
 {
     this->screen = screen;
     this->image = IMG_Load( "background.png" );
     this->x = 0;
+
+
 }
 
 Background::~Background()

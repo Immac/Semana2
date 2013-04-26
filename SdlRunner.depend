@@ -83,7 +83,7 @@
 1366189330 /home/turupawn/Projects/CodeBlocks/Progra 3/Ejemplos/SdlRunner/Timer.h
 	"SDL/SDL.h"
 
-1366587418 source:c:\users\immac\documents\github\semana2\background.cpp
+1366934828 source:c:\users\immac\documents\github\semana2\background.cpp
 	"Background.h"
 
 1366394309 c:\users\immac\documents\github\semana2\background.h
@@ -91,7 +91,7 @@
 	"SDL_image.h"
 	<string>
 
-1366394673 source:c:\users\immac\documents\github\semana2\enemy.cpp
+1366839758 source:c:\users\immac\documents\github\semana2\enemy.cpp
 	"Enemy.h"
 
 1366394332 c:\users\immac\documents\github\semana2\enemy.h
@@ -99,7 +99,7 @@
 	"SDL_image.h"
 	<string>
 
-1366590040 source:c:\users\immac\documents\github\semana2\main.cpp
+1366938864 source:c:\users\immac\documents\github\semana2\main.cpp
 	"SDL.h"
 	"SDL_image.h"
 	"Background.h"
@@ -107,8 +107,9 @@
 	"Enemy.h"
 	"Timer.h"
 	<string>
+	"Floor.h"
 
-1366589539 c:\users\immac\documents\github\semana2\player.h
+1366936804 c:\users\immac\documents\github\semana2\player.h
 	"SDL.h"
 	"SDL_image.h"
 	<string>
@@ -116,9 +117,19 @@
 1366394374 c:\users\immac\documents\github\semana2\timer.h
 	"SDL.h"
 
-1366773476 source:c:\users\immac\documents\github\semana2\player.cpp
+1366935323 source:c:\users\immac\documents\github\semana2\player.cpp
 	"Player.h"
 
 1366392457 source:c:\users\immac\documents\github\semana2\timer.cpp
 	"Timer.h"
+
+1366938661 c:\users\immac\documents\github\semana2\floor.h
+	"SDL.h"
+	"SDL_image.h"
+	<string>
+
+1366937359 source:c:\users\immac\documents\github\semana2\floor.cpp
+	"Floor.h"
+	<cmath>
+	<ctime>
 

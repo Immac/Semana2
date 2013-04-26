@@ -8,20 +8,28 @@ Player::Player(SDL_Surface *screen)
     this->images[1] = IMG_Load( "player/2.png" );
     this->images[2] = IMG_Load( "player/3.png" );
     this->images[3] = IMG_Load( "player/4.png" );
+    // Jump
     this->images[4] = IMG_Load( "player/5.png" );
+    // Die
     this->images[5] = IMG_Load( "player/perder01.png" );
     this->images[6] = IMG_Load( "player/perder02.png" );
     this->images[7] = IMG_Load( "player/perder03.png" );
     this->images[8] = IMG_Load( "player/perder04.png" );
     this->images[9] = IMG_Load( "player/perder05.png" );
+    this->floor = 450;
+
     this->x = 200;
     this->y = 0;
+
+
     this->acceleration = 2;
     this->velocity = 0;
     this->current_frame = 0;
     this->draw_frame = 0;
 }
-
+void Player::setFloor(int i){
+this->floor = i;
+}
 Player::~Player()
 {
     SDL_FreeSurface( images[0] );
@@ -34,16 +42,16 @@ void Player::logic()
 {
     y+=velocity;
     velocity+=acceleration;
-    if(y>=500-images[draw_frame]->w/2)
+    if(y>=this->floor-images[draw_frame]->w/2)
     {
-        y=500-images[draw_frame]->w/2;
+        y=this->floor-images[draw_frame]->w/2;
         velocity=0;
     }
 }
 
 void Player::jump()
 {
-    if(y>=500-images[draw_frame]->w/2)
+    if(y>=this->floor-images[draw_frame]->w/2)
     {
        velocity=-30;
     }
@@ -57,7 +65,7 @@ void Player::render()
     offset.x = x - images[draw_frame]->w/2 - (images[0]->w - images[draw_frame]->w)/2;
     offset.y = y - images[draw_frame]->h/2 + (images[0]->h - images[draw_frame]->h)/1;
 
-    if(y>=500-images[draw_frame]->w/2 || draw_frame > 4 )
+    if(y>=this->floor-images[draw_frame]->w/2 || draw_frame > 4 )
     {
       SDL_BlitSurface( images[draw_frame], NULL, screen, &offset );
     } else {
@@ -65,6 +73,7 @@ void Player::render()
     }
 
     current_frame++;
+
     if(current_frame>5)
         current_frame=0;
         draw_frame = current_frame/2;

@@ -10,7 +10,7 @@ and may not be redistributed without written permission.*/
 #include "Enemy.h"
 #include "Timer.h"
 #include <string>
-
+#include "Floor.h"
 //Screen attributes
 const int SCREEN_WIDTH = 1000;
 const int SCREEN_HEIGHT = 500;
@@ -54,12 +54,25 @@ int main( int argc, char* args[] )
     init();
     update=new Timer();
     update->start();
-    SDL_Surface * game_over = IMG_Load( "game_over.png" );
+    SDL_Surface *game_over = IMG_Load( "game_over.png" );
 
     Background background(screen);
     Player player(screen);
     Enemy enemy(screen);
     Enemy enemy2(screen);
+
+    Floor floor1(screen,0);
+      Floor floor2(screen,1);
+      floor2.x = floor1.x + 200;
+       Floor floor3(screen,0);
+       floor3.x = floor1.x + 400;
+        Floor floor4(screen,1);
+        floor4.x = floor1.x + 600;
+         Floor floor5(screen,0);
+         floor5.x = floor1.x + 800;
+           Floor floor6(screen,1);
+           floor6.x = floor1.x + 1000;
+
     enemy2.x = enemy.x + 350;
     enemy2.y = enemy.y - 150;
 
@@ -95,6 +108,87 @@ int main( int argc, char* args[] )
         enemy.logic();
         enemy2.logic();
 
+        floor1.logic();
+        floor2.logic();
+        floor3.logic();
+        floor4.logic();
+        floor5.logic();
+        floor6.logic();
+
+
+
+        if(player.x-floor1.x<150
+           && player.x-floor1.x>-50
+           && player.y-floor1.y<128
+           && player.y-floor1.y>-150
+           && floor1.state == 1
+           )
+        {
+
+           player.setFloor(900);
+        }
+
+      if(player.x-floor2.x<150
+           && player.x-floor2.x>-50
+           && player.y-floor2.y<128
+           && player.y-floor2.y>-150
+           && floor2.state == 1
+           )
+        {
+
+           player.setFloor(900);
+        }
+
+        if(player.x-floor3.x<150
+           && player.x-floor3.x>-50
+           && player.y-floor3.y<128
+           && player.y-floor3.y>-150
+           && floor3.state == 1
+           )
+        {
+
+           player.setFloor(900);
+        }
+
+      if(player.x-floor4.x<150
+           && player.x-floor4.x>-50
+           && player.y-floor4.y<128
+           && player.y-floor4.y>-150
+           && floor4.state == 1
+           )
+        {
+
+           player.setFloor(900);
+        }
+
+      if(player.x-floor5.x<150
+           && player.x-floor5.x>-50
+           && player.y-floor5.y<128
+           && player.y-floor5.y>-150
+           && floor5.state == 1
+           )
+        {
+
+           player.setFloor(900);
+        }
+
+
+      if(player.x-floor6.x<150
+           && player.x-floor6.x>-50
+           && player.y-floor6.y<128
+           && player.y-floor6.y>-150
+           && floor6.state == 1
+           )
+        {
+
+           player.setFloor(900);
+        }
+
+        if (player.y > 700){
+            break;
+        }
+
+
 
         if(player.x-enemy.x<50
            && player.x-enemy.x>-50
@@ -122,7 +216,12 @@ int main( int argc, char* args[] )
         player.render();
         enemy.render();
         enemy2.render();
-
+        floor1.render();
+        floor2.render();
+        floor3.render();
+        floor4.render();
+        floor5.render();
+        floor6.render();
         frameCap();
 
         //Update the screen
@@ -140,10 +239,17 @@ int main( int argc, char* args[] )
         player.render();
         enemy.render();
         enemy2.render();
+        floor1.render();
+        floor2.render();
+        floor3.render();
+        floor4.render();
+        floor5.render();
+        floor6.render();
 
         frameCap();
 
         SDL_Delay(60);
+
         /*SDL_Rect offset;
         offset.x = 0;
         offset.y = 0;
@@ -159,7 +265,7 @@ int main( int argc, char* args[] )
             return 1;
         }
 
-
+floor1.render();
     }
     while( quit == false )
     {
