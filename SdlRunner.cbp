@@ -42,6 +42,8 @@
 		<Unit filename="Player.h" />
 		<Unit filename="Timer.cpp" />
 		<Unit filename="Timer.h" />
+		<Unit filename="Util.cpp" />
+		<Unit filename="Util.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />

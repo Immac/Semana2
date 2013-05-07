@@ -6,11 +6,12 @@ Enemy::Enemy(SDL_Surface *screen)
     this->images[0] = IMG_Load( "enemy/1.png" );
     this->images[1] = IMG_Load( "enemy/2.png" );
     this->images[2] = IMG_Load( "enemy/3.png" );
-    this->x = 1000;
-    this->y = 350;
+    this->x = -100;
+    this->y = 200;
     this->acceleration=2;
-    this->velocity=0;
+    this->velocity=15;
     this->current_frame=0;
+    srand(time(0));
 }
 
 Enemy::~Enemy()
@@ -23,9 +24,33 @@ Enemy::~Enemy()
 
 void Enemy::logic()
 {
-    x-=10;
-    if(x<-100)
+    x-=velocity;
+    if(x< -100){
+        if(rand()%100 < 1){
+
         x=1000;
+        int randomAppear = rand()%3;
+        if(randomAppear == 0){
+            y = 200;
+            velocity = 15;
+        }else if(randomAppear == 1){
+            y = 300;
+            velocity = 18;
+        }else{
+            y = 200;
+            velocity = 20;
+        }
+
+
+        }
+
+    }
+
+}
+
+void Enemy::initPosition(){
+ this->x = -101;
+
 }
 
 void Enemy::jump()

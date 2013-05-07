@@ -15,10 +15,13 @@ class Floor
                    int y;
                      int state;
         virtual ~Floor();
+        void initPosition();
+        void goNextTo(Floor *suelo);
+        void setNextFloor(Floor *nextFloor);
+        Floor *nextFloor;
     protected:
     private:
         bool canBeWater;
-
 
 
         SDL_Surface *image[2];

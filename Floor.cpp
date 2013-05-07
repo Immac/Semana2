@@ -14,12 +14,21 @@ Floor::Floor(SDL_Surface *screen,bool canBeWater)
     srand(time(0));
     if(canBeWater){
     this->state = ( rand() %2 );
+    this->nextFloor = NULL;
     }
 }
 
 void Floor::logic(){
-x-=10;
+x-=15;
 
+}
+
+void Floor::initPosition(){
+    this->x = 0 + image[state]->w/2;
+    this->y =450;
+    if(canBeWater){
+    this->state = ( rand() %2 );
+    }
 }
 
 void Floor::render(){
@@ -27,14 +36,19 @@ void Floor::render(){
  SDL_Rect offset;
 
 
-    if(x< -image[state]->w){
-        x=1000;
+    if(x< -image[state]->w/2 ){
+        x=1000 + image[state]->w/2;
+
+        if(this->nextFloor != 0 ){
+            nextFloor->x + image[state]->w/2;
+        }
+
         if(canBeWater){
         this->state = ( rand() %2 );
         }
     }
 
-    offset.x = x;
+    offset.x = x - image[state]->w/2;
     offset.y = 450 - 12;
 
 SDL_BlitSurface( image[state], NULL, screen, &offset );
@@ -47,7 +61,12 @@ SDL_BlitSurface( image[state], NULL, screen, &offset );
 */
 
 }
-
+void Floor::goNextTo(Floor *suelo){
+//TODO!
+}
+void Floor::setNextFloor(Floor *nextFloor){
+    this->nextFloor =  nextFloor;
+}
 Floor::~Floor()
 {
 

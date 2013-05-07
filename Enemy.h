@@ -5,7 +5,8 @@
 #include "SDL_image.h"
 //#include "SDL_ttf.h"
 #include <string>
-
+#include <ctime>
+#include  <cmath>
 class Enemy
 {
 public:
@@ -22,6 +23,7 @@ public:
     void render();
     void jump();
     virtual ~Enemy();
+    void initPosition();
 };
 
 #endif // ENEMY_H
